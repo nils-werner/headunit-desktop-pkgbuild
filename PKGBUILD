@@ -1,6 +1,6 @@
 pkgname=headunit-desktop-git
 pkgver=r118.be7e26b
-pkgrel=1
+pkgrel=2
 pkgdesc="HeadUnit Desktop is a car PC software built with Qt 5 and QML"
 arch=('any')
 url="https://github.com/viktorgino/headunit-desktop"
@@ -8,8 +8,12 @@ license=('GPL3')
 depends=(
   'qt5-base'
   'qt5-multimedia'
+  'qt5-quickcontrols'
+  'qt5-quickcontrols2'
+  'qt5-graphicaleffects'
   'qt-gstreamer'
   'openssl'
+  'glib2'
   'libusb'
   'protobuf'
   'libunwind'
@@ -20,9 +24,11 @@ depends=(
 )
 source=(
   'git+https://github.com/viktorgino/headunit-desktop.git'
+  '51-android.rules'
 )
 sha256sums=(
   'SKIP'
+  'ac6ba71fe26d4e8c4f3fb71a085a479fe891b1cb4bd2fd02ce1a120375fdac8b'
 )
 
 pkgver() {
@@ -43,6 +49,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/headunit-desktop"
-  make INSTALL_ROOT="$pkgdir" install
+  install -D -m644 51-android.rules "$pkgdir"/etc/udev/rules.d/51-android.rules
+  install -D -m755 "$srcdir/headunit-desktop/headunit-app" "$pkgdir"/usr/bin/headunit-app
 }
