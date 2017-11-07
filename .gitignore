@@ -3,3 +3,4 @@ pkg/
 headunit-desktop/
 media_database
 *.xz
+*.gz
