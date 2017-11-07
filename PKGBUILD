@@ -1,7 +1,7 @@
 pkgname=headunit-desktop-git
 pkgver=r118.be7e26b
 pkgrel=1
-pkgdesc="overlayFS root file system"
+pkgdesc="HeadUnit Desktop is a car PC software built with Qt 5 and QML"
 arch=('any')
 url="https://github.com/viktorgino/headunit-desktop"
 license=('GPL3')
